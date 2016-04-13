@@ -30,13 +30,27 @@
             android:textSize="16sp"
             android:layout_margin="30dp"
             android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/result" />
     </LinearLayout>
+
     <Button
         android:id="@+id/rotate_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
+        android:layout_gravity="bottom|left"
         android:background="#d7af55"
         android:textColor="#ffffff"
         android:text="rotate"/>
+    <Button
+        android:id="@+id/cat_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:background="#d7af55"
+        android:textColor="#ffffff"
+        android:text="cut"/>
 </FrameLayout>

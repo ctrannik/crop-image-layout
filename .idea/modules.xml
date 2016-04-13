@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CropImageLayout.iml" filepath="$PROJECT_DIR$/CropImageLayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crop-image-layout.iml" filepath="$PROJECT_DIR$/crop-image-layout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/croplayout/croplayout.iml" filepath="$PROJECT_DIR$/croplayout/croplayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/croplayout/croplayout.iml" filepath="$PROJECT_DIR$/croplayout/croplayout.iml" />
     </modules>
   </component>
