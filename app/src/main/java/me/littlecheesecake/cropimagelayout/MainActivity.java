@@ -1,7 +1,9 @@
 package me.littlecheesecake.cropimagelayout;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -15,23 +17,26 @@ import me.littlecheesecake.croplayout.model.ScalableBox;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int x1;
-    private int x2;
-    private int y1;
-    private int y2;
+    private int x1 = 25;
+    private int x2 = 640;
+    private int y1 = 180;
+    private int y2 = 880;
     private Bitmap bitmap;
     private ImageView result;
+    private EditPhotoView imageView;
+    private TextView boxText;
+    private EditableImage image;
+
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         result = (ImageView) findViewById(R.id.result);
-
-        final EditPhotoView imageView = (EditPhotoView) findViewById(R.id.editable_image);
-        final TextView boxText = (TextView) findViewById(R.id.box_text);
-        final EditableImage image = new EditableImage(this, R.drawable.photo2);
+        imageView = (EditPhotoView) findViewById(R.id.editable_image);
+        boxText = (TextView) findViewById(R.id.box_text);
+        image = new EditableImage(this, R.drawable.photo2);
         bitmap = image.getOriginalImage();
         ScalableBox box = new ScalableBox(25,180,640,880);
         image.setBox(box);
@@ -67,6 +72,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void makePhoto(View view){
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+
+            imageView.changeImage(imageBitmap);
+//            imageView.onSizeChanged(imageBitmap.getWidth(), imageBitmap.getHeight() ,bitmap.getWidth() ,bitmap.getHeight());
+            result.setImageBitmap(imageBitmap);
+            bitmap = imageBitmap;
+        }
     }
 
 }

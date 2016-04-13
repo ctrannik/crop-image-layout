@@ -2,6 +2,7 @@ package me.littlecheesecake.croplayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
@@ -50,7 +51,7 @@ public class EditPhotoView extends FrameLayout {
     }
 
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    public void onSizeChanged(int w, int h, int oldw, int oldh) {
         //set the default image and selection view
         if (editableImage != null) {
             editableImage.setViewSize(w, h);
@@ -72,6 +73,7 @@ public class EditPhotoView extends FrameLayout {
         selectionView = new SelectionView(context,
                 lineWidth, cornerWidth, cornerLength,
                 lineColor, cornerColor, shadowColor, editableImage);
+
         imageView = new ImageView(context);
 
         imageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
@@ -79,6 +81,11 @@ public class EditPhotoView extends FrameLayout {
 
         addView(imageView, 0);
         addView(selectionView, 1);
+    }
+
+    public void changeImage(Bitmap bitmap){
+        imageView.setImageBitmap(bitmap);
+        editableImage.setOriginalImage(bitmap);
     }
 
     public void setOnBoxChangedListener(OnBoxChangedListener onBoxChangedListener) {

@@ -46,6 +46,15 @@
         android:textColor="#ffffff"
         android:text="rotate"/>
     <Button
+        android:id="@+id/photo_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="#d7af55"
+        android:textColor="#ffffff"
+        android:text="photo"
+        android:onClick="makePhoto"/>
+    <Button
         android:id="@+id/cat_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

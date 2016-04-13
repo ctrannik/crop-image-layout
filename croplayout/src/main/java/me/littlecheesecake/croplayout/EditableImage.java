@@ -32,6 +32,11 @@ public class EditableImage {
         originalBox = new ScalableBox();
     }
 
+    public EditableImage(Context context, Bitmap bitmap) {
+        originalImage = bitmap;
+        originalBox = new ScalableBox();
+    }
+
     public void setViewSize(int viewWidth, int viewHeight) {
         this.viewWidth = viewWidth;
         this.viewHeight = viewHeight;
@@ -120,4 +125,7 @@ public class EditableImage {
         ImageHelper.saveImageToPath(originalImage, path);
     }
 
+    public void setOriginalImage( Bitmap bitmap){
+        originalImage = bitmap;
+    }
 }
